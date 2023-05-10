@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Css/signup.css' %}">
+    <title>Welcome Page</title>
+</head>
+<body>
+    <fieldset>
+        <div class="body">
+            <header>
+                <img src="{% static 'Images/logo.jpeg' %}" alt="Image Description" class="logo">
+                <div class="#">
+                    <div class="headerTag">
+                        <ul class="headerList">
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="#">ABOUT US</a></li>
+                            <li><a href="#">SERVICES</a></li>
+                            <li><a href="#">HELP</a></li>
+                            <li><a href="#">CONTACT US</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="signup"><a href="signup">Sign Up</a></button>
+            </header>
+
+            <div class="form">
+                <img src="{% static 'Images/welcome.jpg' %}" alt="" class="intro">
+
+                <div class="fillin">
+                    <form action="login" method="POST">
+                        {%  csrf_token %}
+                        <h2>Welcome Back</h2>
+                        <h3>Fill the form below to log back in</h3>
+                        <br>
+                        <span>
+                            <p>Username</p>
+                            <br>
+                            <input type="text" name="username">
+                        </span>
+                        <br>
+                        <span>
+                            <p>Password</p>
+                            <br>
+                            <input type="password" name="password">
+                        </span>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <button class="register">Register</button>
+                        <br>
+                        <h4 class="redirect">New Member?<a href="signup">Click here to create an account</a></h4>
+                        <br>
+                        <br>
+                    </form>
+                    {% for message in messages %}
+                        <h5 class="message">{{message}}</h5>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </fieldset>  
+    
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Css/courses.css' %}">
+    <title>HomePage</title>
+    <script>
+        function openPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+    </script>
+</head>
+<body>
+    <header>
+        <img src="{% static 'Images/logo.jpeg' %}" alt="Image Description" class="logo">
+        <div class="#">
+            <div class="headerTag">
+                <ul class="headerList">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">SERVICES</a></li>
+                    <li><a href="#">HELP</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </div>
+        </div>
+        <button class="signup"><a href="#">Logout</a></button>
+    </header>
+
+    <div class="dashboard">
+        <div class="sidemenu">
+            <div class="profile">
+                <img src="{% static 'Images/profilepic.png' %}" alt="">
+                <div class="info">
+                    <input type="text" placeholder="Username" name="username" readonly>
+                    <input type="text" placeholder="user@email.com" name="email" readonly>
+                </div>
+            </div>
+            <ul>
+                <span>
+                    <img src="{% static 'Icons/dashboard.png' %}" alt=""><br>
+                    <li><a href="home">Dashboard</a></li>
+                </span>
+                <span>
+                    <img src="{% static 'Icons/content.png' %}" alt=""><br>
+                    <li><a href="courses">My Courses</a></li>
+                </span>
+                <span>
+                    <img src="{% static 'Icons/message.png' %}" alt=""><br>
+                    <li><a href="home">Chat</a></li>
+                </span>
+                <span>
+                    <img src="{% static 'Icons/dashboard.png' %}" alt=""><br>
+                    <li><a href="home">Schedule</a></li>
+                </span>
+                <span>
+                    <img src="{% static 'Icons/logout.png' %}" alt=""><br>
+                    <li><a href="home">Log Out</a></li>
+                </span>                
+            </ul>
+            <div class="footer">
+                <fieldset class="footer_content">
+                    <legend><img src="{% static 'Images/final.png' %}" alt=""></legend>
+                    <br>
+                    <br>
+                    <div class="quote">
+                        <p class="text">"Education is the passport to the future, for tomorrow belogs to those who prepare for it today"</p>
+                        <br>
+                        <p class="writter"> - Malcolm X</p>
+                    </div>
+                    <br>
+                    <button class="more_info"> Learn more</button>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="center_container">
+            <div class="center_header">
+                <h3>Courses</h3>
+                <form action="search" method="GET">
+                    <div class="search">
+                        <input type="text" name="search" placeholder="Search">
+                        <br>
+                        <button><a href="#">Search</a></button>
+                    </div>
+                </form>
+            </div>
+            <br>
+            <br>
+
+            <div class="center_body">
+                <div class="new_courses">
+                    <h4>New Courses</h4>
+                    <br>
+                    <br>
+                    <div class="new_tables">
+                        <table>
+                            <tr>
+                                {% for course in course reversed %}
+                                <td class="course">
+                                    <img src="#" alt="#">
+                                    <br>
+                                    <br>
+                                    <h5>{{ course.code}}</h5>
+                                    <h5>{{ course.title }}</h5>
+                                    <br>
+                                    <br>
+                                    <button onclick="openPopup()" class="click">Click me!</button>
+                                    <div id="popup" class="popup">
+                                        <h2>This is a pop-up!</h2>
+                                        <h5>{{ course.code }}</h5>
+                                        <h5>{{ course.title }}</h5>
+                                        <button onclick="closePopup()" class="close">Close</button>
+                                        <button class="add">Add Course</button>
+                                    </div>
+                                </td>
+                                {% endfor %}
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+              
+        </div>
+        <div class="leftmenu">
+            <h5>Hello</h5>
+        </div>
+
+    </div>
+</body>
+</html>

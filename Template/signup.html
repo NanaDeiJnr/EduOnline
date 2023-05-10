@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Css/signup.css' %}">
+    <title>Welcome Page</title>
+</head>
+<body>
+    <fieldset>
+        <div class="body">
+            <header>
+                <img src="{% static 'Images/logo.jpeg' %}" alt="Image Description" class="logo">
+                <div class="#">
+                    <div class="headerTag">
+                        <ul class="headerList">
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="#">ABOUT US</a></li>
+                            <li><a href="#">SERVICES</a></li>
+                            <li><a href="#">HELP</a></li>
+                            <li><a href="#">CONTACT US</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="signup"><a href="signin">Sign In</a></button>
+            </header>
+
+            <div class="form">
+                <img src="{% static 'Images/welcome.jpg' %}" alt="" class="intro">
+
+                <div class="fillin">
+                    <form action="signup" method="POST">
+                        {%  csrf_token %}
+
+                        <h2>Sign Up Here</h2>
+                        <span>
+                            <p>Username</p>
+                            <br>
+                            <input type="text" name="username">
+                        </span>
+                        <br>
+                        <span>
+                            <p>Email</p>
+                            <br>
+                            <input type="email" name="email">
+                        </span>
+                        <br>
+                        <div class="passwords">
+                            <span>
+                                <p>Password</p>
+                                <br>
+                                <input type="password" name="password">
+                            </span>
+                            <span>
+                                <p>Confrim Password</p>
+                                <br>
+                                <input type="password" name="password_2">
+                            </span>
+                            <br>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <button class="register">Register</button>
+                        <br>
+                        <h4 class="redirect">Already have an account? <a href="login">Log In</a></h4>
+                        <br>
+                        <br>
+                        {% for message in messages %}
+                        <h5 class="message">{{message}}</h5>
+                        {% endfor %}
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </fieldset>  
+    
+
+</body>
+</html>

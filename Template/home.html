@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Css/home.css' %}">
+    <title>HomePage</title>
+</head>
+<body>
+    <header>
+        <img src="{% static 'Images/logo.jpeg' %}" alt="Image Description" class="logo">
+        <div class="#">
+            <div class="headerTag">
+                <ul class="headerList">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">SERVICES</a></li>
+                    <li><a href="#">HELP</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </div>
+        </div>
+        <button class="signup"><a href="#">Logout</a></button>
+    </header>
+
+    <div class="dashboard">
+        <div class="sidemenu">
+            <div class="profile">
+                <img src="{% static 'Images/profilepic.png' %}" alt="">
+                <div class="info">
+                    <input type="text" placeholder="Username" name="username" readonly>
+                    <input type="text" placeholder="user@email.com" name="email" readonly>
+                </div>
+            </div>
+            <ul>
+                <span>
+                    <img src="{% static 'Icons/dashboard.png' %}" alt=""><br>
+                    <li><a href="home">Dashboard</a></li>
+                </span>
+                <span>
+                    <img src="{% static 'Icons/content.png' %}" alt=""><br>
+                    <li><a href="courses">My Courses</a></li>
+                </span>
+                <span>
+                    <img src="{% static 'Icons/message.png' %}" alt=""><br>
+                    <li><a href="home">Chat</a></li>
+                </span>
+                <span>
+                    <img src="{% static 'Icons/dashboard.png' %}" alt=""><br>
+                    <li><a href="home">Schedule</a></li>
+                </span>
+                <span>
+                    <img src="{% static 'Icons/logout.png' %}" alt=""><br>
+                    <li><a href="home">Log Out</a></li>
+                </span>                
+            </ul>
+            <div class="footer">
+                <fieldset class="footer_content">
+                    <legend><img src="{% static 'Images/final.png' %}" alt=""></legend>
+                    <br>
+                    <br>
+                    <div class="quote">
+                        <p class="text">"Education is the passport to the future, for tomorrow belogs to those who prepare for it today"</p>
+                        <br>
+                        <p class="writter"> - Malcolm X</p>
+                    </div>
+                    <br>
+                    <button class="more_info"> Learn more</button>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="center_container">
+            <div class="center_header">
+                <h3>Dashboard</h3>
+                <form action="search" method="GET">
+                    <div class="search">
+                        <input type="text" name="search" placeholder="Search">
+                        <br>
+                        <button><a href="#">Search</a></button>
+                    </div>
+                </form>
+            </div>
+            <br>
+            <br>
+            <div class="center_body">
+                <div class="new_courses">
+                    <h4>New Courses</h4>
+                    <br>
+                    <br>
+                    <div class="courses">
+                        <table>
+                            <tr>
+                                {% for course in course reversed %}
+                                <td class="course">
+                                    <img src="{% static 'Images/student1.jpg' %}" alt="" class="image">
+                                    <h5 class="code">{{ course.code }}</h5>
+                                    <h5 class="course_title">{{ course.title }}</h5>
+                                    <br>
+                                    <button class="go"><a href="#"> > </a></button>
+                                </td>
+                                {% endfor %}
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="my_courses">
+                    <h4>My Courses</h4>
+                    <table>
+                        <tr class="table_header">
+                            <td class="header_1">Course Title</td>
+                            <td class="header_2">Date</td>
+                            <td class="header_3">Grade</td>
+                            <td class="header_4">Remark</td>
+                        </tr>
+                        {% for course in course %}
+                        <tr class="data">
+                            <td>
+                                <span>
+                                    <img src="{% static 'Images/student1.jpg' %}" alt="">
+                                    <div>
+                                        {{ course.code }}
+                                        <br>
+                                        {{ course.title }}
+                                    </div>
+                                </span>
+                            </td>    
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <br>
+            </div>
+    
+            </div>
+        <div class="leftmenu">
+            <div class="bottom">
+                <fieldset class="leftfooter">
+                    <legend>Homework Progress</legend>
+                    <table>
+                        {% for course in course %}
+                        <tr>
+                            <td>
+                                <div>
+                                    {{ course.title}}
+                                    <br>
+                                    {{ course.code }}
+                                   
+                                </div>
+                                <br>
+                                <button class="progress"><a href=""> > </a></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        
+                        {% for course in course %}
+                        <tr>
+                            <td>
+                                <div>
+                                    {{ course.title}}
+                                    <br>
+                                    {{ course.code }}
+                                    
+                                </div>
+                                <br>
+                                <button class="progress"> > </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+{% extends 'home.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Css/home.css' %}">
+    <title>Welcome Page</title>
+</head>
+<body>
+    <header>
+        <img src="{% static 'Images/logo.jpeg' %}" alt="Image Description" class="logo">
+        <div class="#">
+            <div class="headerTag">
+                <ul class="headerList">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">SERVICES</a></li>
+                    <li><a href="#">HELP</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </div>
+        </div>
+        <button class="signup"><a href="#">Logout</a></button>
+    </header>
+
+    <div class="dashboard">
+        <div class="sidemenu">
+            <div class="profile">
+                <img src="{% static 'Images/profilepic.png' %}" alt="">
+                <div class="info">
+                    <input type="text" placeholder="Username" name="username" readonly>
+                    <input type="text" placeholder="user@email.com" name="email" readonly>
+                </div>
+            </div>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">My Courses</a></li>
+                <li><a href="#">Chats</a></li>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+
+            <div class="center">
+
+                {% block content %}
+                    <form method="get" action="search">
+                        {{ form.as_p }}
+                        <button type="submit">Search</button>
+                    </form>
+
+                    {% if object %}
+                        <ul>
+                            {% for result in result %}
+                            <li>
+                                <td class="course">
+                                    <img src="{% static 'Images/student1.jpg' %}" alt="">
+                                    <br>
+                                    <h4 class="code">{{ object.code }}</h4>
+                                    <h4 class="course_title">{{ object.title }}</h4>
+                                    <h4 class="desc">{{ object.desc }}</h4>
+                                    <button class="course_info">Read More</button>
+                                </td>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

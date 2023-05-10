@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Css/index.css' %}">
+    <title>Welcome Page</title>
+</head>
+<body>
+    <header>
+        <img src="{% static 'Images/logo.jpeg' %}" alt="Image Description" class="logo">
+        <div class="#">
+            <div class="headerTag">
+                <ul class="headerList">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">SERVICES</a></li>
+                    <li><a href="#">HELP</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </div>
+        </div>
+        <button class="signup"><a href="#">Sign Up</a></button>
+
+    </header>
+
+    <div class="introduction">
+        <div>
+            <img src="{% static 'Images/welcome.jpg' %}" alt="Image Description" class="welcome_img">
+        </div>
+
+        <div class="welcome">
+            <h1>Welcome To EduOnline.</h1>
+            <br>
+            <h3>Hope you have fun while you learn.</h3>
+            <br>
+            <br>
+            <button class="get_started"><a href="signup">Get Started</a></button>
+        </div>
+     
+    </div>
+
+</body>
+</html>
